@@ -1,11 +1,128 @@
-.normal {
-  font-size:1.32em;
-  letter-spacing:normal;
-  line-height:1.5em;
-  text-align:left;
+/*
+   Main StyleSheet for the 'Generic' theme
+*/
+
+body {
+  color: 	#330000;
+  font-family: "Arial Unicode MS", "Gentium", "Lucida Grande", "Microsoft Sans Serif", "Tahoma", sans-serif, "XenoType Tibetan New","Tibetan Machine Uni"!important;
+  text-align: justify;
+  margin:0px;
+  padding:0px;
+  font-size: 14px;
+  background-color: #4B7399;
 }
 
+h4 {
+  font-size: 16px;
+  color: #89594A;
+  font-weight: normal;
+}
+
+h4>a, h4>a:visited { color: #89594A; }
+
+h3 {
+  font-size: 18px;
+  color : #595B5D;
+  font-weight: normal;
+}
+h3>a, h3>a:visited { color: #595B5D; }
+
+h2 {
+  font-size: 20px;
+  color: #A04E27;
+  font-weight: normal;
+}
+h2>a, h2>a:visited { color: #A04E27; }
+
+h1 {
+  font-size: 22px;
+  color: #413F3D;
+}
+h1>a, h1>a:visited { color: #413F3D; }
+
+pre {
+  background-color:#7D2252 ;
+}
+
+a { color: #2F4F4F; }
+a:visited { color: black }
+a:hover, h4>a:hover { color: #C34A2C; }
+
 a.collapsable { text-decoration: none }
+
+.header-links {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #336699;
+  border: solid 1px black;
+  margin-top: 20px;
+  padding: 0px 40px;
+}
+
+.header-links td {
+  color: #C8BBBE;
+  font-size: 12px;
+}
+
+.header-links a { color :white ; }
+.header-links a:visited { color: white; }
+.header-links a:hover { color: #C8BBBE; }
+
+#main {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 1px black;
+  overflow: auto;
+}
+
+.footer {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #717D7D;
+  border: solid 1px black;
+  padding: 5px 40px;
+}
+
+.footer td {
+  color: #000;
+  font-size: 10px;
+}
+
+.media_keywords {
+  font-size: 9px;
+  color :white;
+}
+
+.media_keywords a:hover { color: #C8BBBE; }
+
+.footer a { color : white; }
+.footer a:visited { color: #D8BBAE; }
+.footer a:hover { color: #C8BBBE; }
+
+.selected_branch {
+  background-color: #FFDDB5;
+}
+
+#primary{
+	float: right;
+	width: 45%;
+}
+
+#secondary{
+	width: 55%;
+}
+
+#navigation{
+}
+
+#content-main{
+    width: 60%;
+    float: right;
+}
+
+.clear{ clear:both }
 
 .fieldWithErrors {
   padding: 2px;
