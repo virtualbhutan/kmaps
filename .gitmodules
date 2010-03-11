@@ -31,6 +31,6 @@
 [submodule "vendor/plugins/kmaps_engine"]
 	path = vendor/plugins/kmaps_engine
 	url = git://github.com/thl/kmaps_engine.git
-[submodule "vendor/plugins/thl_integration"]
-	path = vendor/plugins/thl_integration
-	url = git://github.com/thl/thl_integration.git
+[submodule "vendor/plugins/basic_engine"]
+	path = vendor/plugins/basic_engine
+	url = git://github.com/amontano/basic_engine.git
