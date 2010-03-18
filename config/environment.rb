@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
-  config.plugins = [:globalize2, :acts_as_tree, :kmaps_engine, :basic_engine, :all ]
+  config.plugins = [:globalize2, :acts_as_tree, :kmaps_engine, :all ]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
