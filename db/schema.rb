@@ -60,63 +60,10 @@ ActiveRecord::Schema.define(:version => 20090731042553) do
     t.string   "title"
   end
 
-  create_table "globalize_countries", :force => true do |t|
-    t.string "code",                   :limit => 2
-    t.string "english_name"
-    t.string "date_format"
-    t.string "currency_format"
-    t.string "currency_code",          :limit => 3
-    t.string "thousands_sep",          :limit => 2
-    t.string "decimal_sep",            :limit => 2
-    t.string "currency_decimal_sep",   :limit => 2
-    t.string "number_grouping_scheme"
-  end
-
-  add_index "globalize_countries", ["code"], :name => "index_globalize_countries_on_code"
-
-  create_table "globalize_languages", :force => true do |t|
-    t.string  "iso_639_1",             :limit => 2
-    t.string  "iso_639_2",             :limit => 3
-    t.string  "iso_639_3",             :limit => 3
-    t.string  "rfc_3066"
-    t.string  "english_name"
-    t.string  "english_name_locale"
-    t.string  "english_name_modifier"
-    t.string  "native_name"
-    t.string  "native_name_locale"
-    t.string  "native_name_modifier"
-    t.boolean "macro_language"
-    t.string  "direction"
-    t.string  "pluralization"
-    t.string  "scope",                 :limit => 1
-  end
-
-  add_index "globalize_languages", ["iso_639_1"], :name => "index_globalize_languages_on_iso_639_1"
-  add_index "globalize_languages", ["iso_639_2"], :name => "index_globalize_languages_on_iso_639_2"
-  add_index "globalize_languages", ["iso_639_3"], :name => "index_globalize_languages_on_iso_639_3"
-  add_index "globalize_languages", ["rfc_3066"], :name => "index_globalize_languages_on_rfc_3066"
-
-  create_table "globalize_translations", :force => true do |t|
-    t.string  "type"
-    t.string  "tr_key"
-    t.string  "table_name"
-    t.integer "item_id"
-    t.string  "facet"
-    t.boolean "built_in",            :default => false
-    t.integer "language_id"
-    t.integer "pluralization_index"
-    t.text    "text"
-    t.string  "namespace"
-  end
-
-  add_index "globalize_translations", ["table_name", "item_id", "language_id"], :name => "globalize_translations_table_name_and_item_and_language"
-  add_index "globalize_translations", ["tr_key", "language_id"], :name => "index_globalize_translations_on_tr_key_and_language_id"
-
   create_table "languages", :force => true do |t|
     t.string  "title",                   :limit => 100,                    :null => false
     t.string  "code",                    :limit => 3,                      :null => false
     t.string  "locale",                  :limit => 6,                      :null => false
-    t.integer "languages",                              :default => 0,     :null => false
     t.integer "unicode_codepoint_start"
     t.integer "unicode_codepoint_end"
     t.boolean "use_for_interface",                      :default => false, :null => false
@@ -138,16 +85,14 @@ ActiveRecord::Schema.define(:version => 20090731042553) do
   end
 
   create_table "people", :force => true do |t|
-    t.string   "fullname",   :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "fullname", :null => false
   end
 
+  add_index "people", ["fullname"], :name => "index_people_on_fullname", :unique => true
+
   create_table "permissions", :force => true do |t|
-    t.string   "title",       :limit => 60, :null => false
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "title",       :limit => 60, :null => false
+    t.text   "description"
   end
 
   add_index "permissions", ["title"], :name => "index_permissions_on_title", :unique => true
@@ -160,10 +105,8 @@ ActiveRecord::Schema.define(:version => 20090731042553) do
   add_index "permissions_roles", ["permission_id", "role_id"], :name => "index_permissions_roles_on_permission_id_and_role_id", :unique => true
 
   create_table "roles", :force => true do |t|
-    t.string   "title",       :limit => 20, :null => false
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "title",       :limit => 20, :null => false
+    t.text   "description"
   end
 
   add_index "roles", ["title"], :name => "index_roles_on_title", :unique => true
@@ -211,16 +154,18 @@ ActiveRecord::Schema.define(:version => 20090731042553) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                   :null => false
-    t.string   "email",                                   :null => false
     t.integer  "person_id"
+    t.string   "login",                     :limit => 80, :null => false
     t.string   "crypted_password",          :limit => 40, :null => false
+    t.string   "email"
     t.string   "salt",                      :limit => 40
-    t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
     t.string   "identity_url"
   end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end
